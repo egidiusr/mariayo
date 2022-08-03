@@ -14,6 +14,7 @@ class BarangKeluar extends Model
         'no_barang_keluar',
         'id_barang',
         'id_user',
+        'tgl_barang_keluar',
         'jml_barang_keluar',
         'total',
         'created_at',

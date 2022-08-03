@@ -33,10 +33,16 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Data Kategori</h4>
-                                <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalAddKategori">
+                                <button class="btn btn-success btn-round ml-auto" data-toggle="modal" data-target="#modalAddKategori">
                                     <i class="fa fa-plus"></i>
                                     Tambah Data
                                 </button>
+
+                                <a href="/kategori/cetak" class="btn btn-primary btn-round ml-2" target="_blank">
+                                    <i class="fa fa-print"></i>
+                                    Cetak Data
+                                </a>
+
                             </div>
                         </div>
                         <div class="card-body">
@@ -57,7 +63,7 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $row->nama_kategori }}</td>
                                                 <td>
-                                                    <a href="#modalEditKategori{{ $row->id }}" data-toggle="modal" class="btn btn-primary btn-xs"><i class="fa fa-edit"> Edit</i></a>
+                                                    <a href="#modalEditKategori{{ $row->id }}" data-toggle="modal" class="btn btn-warning btn-xs"><i class="fa fa-edit"> Edit</i></a>
                                                     <a href="#modalHapusKategori{{ $row->id }}" data-toggle="modal" class="btn btn-danger btn-xs"><i class="fa fa-trash"> Hapus</i></a>
                                                 </td>
                                             </tr>

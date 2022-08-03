@@ -23,7 +23,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="#">Barang</a>
-                    </li>
+                    </li> 
                 </ul>
             </div>
             <div class="row">
@@ -33,10 +33,17 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Data Barang</h4>
-                                <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalAddBarang">
+
+                                <button class="btn btn-success btn-round ml-auto" data-toggle="modal" data-target="#modalAddBarang">
                                     <i class="fa fa-plus"></i>
                                     Tambah Data
                                 </button>
+
+                                <a href="/barang/cetak" class="btn btn-primary btn-round ml-2" target="_blank">
+                                    <i class="fa fa-print"></i>
+                                    Cetak Data
+                                </a>
+
                             </div>
                         </div>
                         <div class="card-body">
@@ -63,7 +70,7 @@
                                                 <td>Rp. {{ number_format($row->harga) }}</td>
                                                 <td>{{ $row->stok }} Unit</td>
                                                 <td>
-                                                    <a href="#modalEditBarang{{ $row->id }}" data-toggle="modal" class="btn btn-primary btn-xs"><i class="fa fa-edit"> Edit</i></a>
+                                                    <a href="#modalEditBarang{{ $row->id }}" data-toggle="modal" class="btn btn-warning btn-xs"><i class="fa fa-edit"> Edit</i></a>
                                                     <a href="#modalHapusBarang{{ $row->id }}" data-toggle="modal" class="btn btn-danger btn-xs"><i class="fa fa-trash"> Hapus</i></a>
                                                 </td>
                                             </tr>

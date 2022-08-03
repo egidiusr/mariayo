@@ -79,4 +79,11 @@ class UserController extends Controller
 
         return redirect('/user')->with('success', 'Berhasil menghapus data');
     }
+
+    public function cetak_user()
+    {
+        $user = User::all();
+
+        return view('admin.master.user.cetak', compact('user'));
+    }
 }

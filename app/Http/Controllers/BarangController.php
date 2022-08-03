@@ -84,4 +84,11 @@ class BarangController extends Controller
 
         return redirect('/barang')->with('success', 'Berhasil menghapus data');
     }
+
+    public function cetak_barang()
+    {
+        $barang = Barang::all();
+
+        return view('admin.master.barang.cetak', compact('barang'));
+    }
 }

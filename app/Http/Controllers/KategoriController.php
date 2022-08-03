@@ -72,4 +72,11 @@ class KategoriController extends Controller
 
         return redirect('/kategori')->with('success', 'Berhasil menghapus data');
     }
+
+    public function cetak_kategori()
+    {
+        $kategori = Kategori::all();
+
+        return view('admin.master.kategori.cetak', compact('kategori'));
+    }
 }

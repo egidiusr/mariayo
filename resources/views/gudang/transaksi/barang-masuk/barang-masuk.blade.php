@@ -33,10 +33,15 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Data Barang Masuk</h4>
-                                <a class="btn btn-primary btn-round ml-auto" href="/barang_masuk/create">
+                                    <a class="btn btn-success btn-round ml-auto" href="/barang-masuk/add">
                                     <i class="fa fa-plus"></i>
                                     Tambah Data
-                                </a>
+                                    </a>
+
+                                    <button class="btn btn-primary btn-round ml-2" data-toggle="modal" data-target="#modalCetak">
+                                    <i class="fa fa-print"></i>
+                                    Cetak Data
+                                    </button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -49,10 +54,10 @@
                                             <th>No Barang Masuk</th>
                                             <th>Nama Barang</th>
                                             <th>Kategori</th>
+                                            <th>Tanggal Masuk</th>
                                             <th>Harga</th>
                                             <th>Jumlah</th>
                                             <th>Total</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -62,10 +67,11 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $row->no_barang_masuk }}</td>
                                                 <td>{{ $row->nama_barang }}</td>
-                                                <td>{{ $row->kategori }}</td>
+                                                <td>{{ $row->nama_kategori }}</td>
+                                                <td>{{ date('d F Y', strtotime($row->tgl_barang_masuk)) }}</td>
                                                 <td>Rp. {{ number_format($row->harga) }}</td>
-                                                <td>{{ $row->jumlah }}</td>
-                                                <td>{{ $row->total }}</td>
+                                                <td>{{ $row->jml_barang_masuk }} Unit</td>
+                                                <td>Rp. {{ number_format($row->total) }}</td>
                                             </tr>
                                             @endforeach
                                     </tbody>
@@ -75,6 +81,41 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCetak" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCetak">Cetak Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form action="/barang-masuk/cetak" method="get" enctype="multipart/form-data" target="_blank">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Tanggal Mulai</label>
+                        <input type="date" class="form-control" name="tgl_mulai" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tanggal Selesai</label>
+                        <input type="date" class="form-control" name="tgl_selesai" required>
+                    </div>
+            
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-print"></i> Cetak</button>
+                    </div>
+                </div>
+
+            </form>
+
         </div>
     </div>
 </div>

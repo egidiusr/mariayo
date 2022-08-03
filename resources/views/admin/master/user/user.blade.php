@@ -33,11 +33,19 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Data User</h4>
-                                <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalAddUser">
+
+                                <button class="btn btn-success btn-round ml-auto" data-toggle="modal" data-target="#modalAddUser">
                                     <i class="fa fa-plus"></i>
                                     Tambah Data
                                 </button>
+
+                                <a href="/user/cetak" class="btn btn-primary btn-round ml-2" target="_blank">
+                                    <i class="fa fa-print"></i>
+                                    Cetak Data
+                                </a>
+
                             </div>
+                            
                         </div>
                         <div class="card-body">
 
@@ -61,7 +69,7 @@
                                                 <td>{{ $row->email }}</td>
                                                 <td>{{ $row->level }}</td>
                                                 <td>
-                                                    <a href="#modalEditUser{{ $row->id }}" data-toggle="modal" class="btn btn-primary btn-xs"><i class="fa fa-edit"> Edit</i></a>
+                                                    <a href="#modalEditUser{{ $row->id }}" data-toggle="modal" class="btn btn-warning btn-xs"><i class="fa fa-edit"> Edit</i></a>
                                                     <a href="#modalHapusUser{{ $row->id }}" data-toggle="modal" class="btn btn-danger btn-xs"><i class="fa fa-trash"> Hapus</i></a>
                                                 </td>
                                             </tr>
