@@ -4,119 +4,162 @@
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
-            <div class="page-header">
-                <h4 class="page-title">Dashboard</h4>
-                <ul class="breadcrumbs">
-                    <li class="nav-home">
-                        <a href="#">
-                            <i class="flaticon-home"></i>
-                        </a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Tables</a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Datatables</a>
-                    </li>
-                </ul>
-            </div>
+            <!-- Card -->
+            <h4 class="page-title">Dashboard</h4>
             <div class="row">
-                
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="d-flex align-items-center">
-                                <h4 class="card-title">Add Row</h4>
-                                <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
-                                    <i class="fa fa-plus"></i>
-                                    Add Row
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <!-- Modal -->
-                            <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header no-bd">
-                                            <h5 class="modal-title">
-                                                <span class="fw-mediumbold">
-                                                New</span> 
-                                                <span class="fw-light">
-                                                    Row
-                                                </span>
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                {{-- Dashboard Admin --}}
+                @if (Auth::user()->level == 'admin')
+                    <div class="col-sm-6 col-md-4">
+                        <div class="card card-stats card-primary card-round">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <div class="icon-big text-center">
+                                            <i class="
+                                            flaticon-box-1"></i>
                                         </div>
-                                        <div class="modal-body">
-                                            <p class="small">Create a new row using this form, make sure you fill them all</p>
-                                            <form>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Name</label>
-                                                            <input id="addName" type="text" class="form-control" placeholder="fill name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pr-0">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Position</label>
-                                                            <input id="addPosition" type="text" class="form-control" placeholder="fill position">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Office</label>
-                                                            <input id="addOffice" type="text" class="form-control" placeholder="fill office">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer no-bd">
-                                            <button type="button" id="addRowButton" class="btn btn-primary">Add</button>
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                    <div class="col col-stats">
+                                        <div class="numbers">
+                                            <p class="card-category">Data Barang</p>
+                                            <h4 class="card-title">{{ $barang }}</h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover" >
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>
-                                                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"> Edit</i></a>
-                                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"> Hapus</i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="card card-stats card-info card-round">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <div class="icon-big text-center">
+                                            <i class="flaticon-shapes-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col col-stats">
+                                        <div class="numbers">
+                                            <p class="card-category">Data Kategori</p>
+                                            <h4 class="card-title">{{ $kategori }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="card card-stats card-success card-round">
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <div class="icon-big text-center">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col col-stats">
+                                        <div class="numbers">
+                                            <p class="card-category">Data User</p>
+                                            <h4 class="card-title">{{ $user }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                {{-- Dashboard Gudang --}}
+                @if (Auth::user()->level == 'gudang' || Auth::user()->level == 'admin')
+                    <div class="col-sm-6 col-md-6">
+                        <div class="card card-stats card-warning card-round">
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <div class="icon-big text-center">
+                                            <i class="
+                                            flaticon-down-arrow-2"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col col-stats">
+                                        <div class="numbers">
+                                            <p class="card-category">Data Barang Masuk Hari Ini</p>
+                                            <h4 class="card-title">{{ $barang_masuk }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <div class="card card-stats card-secondary card-round">
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <div class="icon-big text-center">
+                                            <i class="
+                                            flaticon-arrows"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col col-stats">
+                                        <div class="numbers">
+                                            <p class="card-category">Data Barang Keluar Hari Ini</p>
+                                            <h4 class="card-title">{{ $barang_keluar }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Bar Chart --}}
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Bar Chart</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <canvas id="barChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                @endif
             </div>
         </div>
-    </div>
+    </div>	
 </div>
+
+<script>
+    barChart = document.getElementById('barChart').getContext('2d'),
+    // multipleBarChart = document.getElementById('multipleBarChart').getContext('2d');
+
+    var myBarChart = new Chart(barChart, {
+			type: 'bar',
+			data: {
+				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+				datasets : [{
+					label: "Sales",
+					backgroundColor: 'rgb(23, 125, 255)',
+					borderColor: 'rgb(23, 125, 255)',
+					data: [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4],
+				}],
+			},
+			options: {
+				responsive: true, 
+				maintainAspectRatio: false,
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true
+						}
+					}]
+				},
+			}
+		});
+
+</script>
+
 @endsection

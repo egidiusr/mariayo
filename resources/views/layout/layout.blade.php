@@ -5,7 +5,7 @@
 	<title>Mariayo Inventory</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<link rel="icon" href="{{ asset('assets/img/icon.ico') }}" type="image/x-icon"/>
+	<link rel="icon" href="{{ asset('assets/img/mariayo.ico') }}" type="image/x-icon"/>
 	
 	<!-- Fonts and icons -->
 	<script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
@@ -34,7 +34,7 @@
 			<div class="logo-header">
 				
 				<a href="#" class="logo">
-					<img src="{{ asset('assets/img/logoazzara.svg') }}" alt="navbar brand" class="navbar-brand">
+					<img src="{{ asset('assets/img/mariayo.png') }}" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -136,7 +136,7 @@
 							<h4 class="text-section">Manajemen</h4>
 						</li>
 
-                        {{-- Dashboard Admin --}}
+                        {{-- Menu Admin --}}
                         @if (Auth::user()->level == 'admin')
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#produk">
@@ -159,15 +159,9 @@
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item">
-							<a href="/user">
-								<i class="fas fa-users"></i>
-								<p>Manajemen User</p>
-								{{-- <span class="badge badge-count">5</span> --}}
-							</a>
-						</li>
                         @endif
 
+						{{-- Menu Gudang --}}
                         @if (Auth::user()->level == 'gudang' || Auth::user()->level == 'admin')
 							<li class="nav-item">
 								<a data-toggle="collapse" href="#barang">
@@ -190,14 +184,26 @@
 									</ul>
 								</div>
 							</li>
-							<li class="nav-item">
-								<a href="#">
-									<i class="fas fa-lock"></i>
-									<p>Logout</p>
-									{{-- <span class="badge badge-count">5</span> --}}
-								</a>
-							</li>
                         @endif
+						
+						{{-- Dashboard Admin --}}
+                        @if (Auth::user()->level == 'admin')
+						<li class="nav-item">
+							<a href="/user">
+								<i class="fas fa-users"></i>
+								<p>Manajemen User</p>
+								{{-- <span class="badge badge-count">5</span> --}}
+							</a>
+						</li>
+                        @endif
+
+						<li class="nav-item">
+							<a href="/logout">
+								<i class="fas fa-lock"></i>
+								<p>Logout</p>
+								{{-- <span class="badge badge-count">5</span> --}}
+							</a>
+						</li>
 
 					</ul>
 				</div>

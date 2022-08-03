@@ -29,6 +29,7 @@ Route::get('/', [AuthController::class, 'index'])->middleware('guest');
 // Route::get('/', [AuthController::class, 'index'])->name('index');
 Route::post('/cek_login', [AuthController::class, 'cek_login']);
 Route::get('/logout', [AuthController::class, 'logout']);
+Route::get('/home', [AuthController::class, 'logout']);
 
 Route::group(['middleware' => ['auth', 'checkLevel:admin']], function () {
 
@@ -52,22 +53,6 @@ Route::group(['middleware' => ['auth', 'checkLevel:admin']], function () {
     Route::post('/barang/{id}/update', [BarangController::class, 'update']);
     Route::get('/barang/{id}/destroy', [BarangController::class, 'destroy']);
     Route::get('/barang/cetak', [BarangController::class, 'cetak_barang']);
-
-    //Data Laporan
-    // Route::get('/lap-barang-masuk', [LaporanController::class, 'lap_barang_masuk']);
-    // Route::get('/lap-barang-masuk/cetak', [LaporanController::class, 'cetak_barang_masuk']);
-
-    // Route::get('/lap-barang-keluar', [LaporanController::class, 'lap_barang_keluar']);
-    // Route::get('/lap-barang-keluar/cetak', [LaporanController::class, 'cetak_barang_keluar']);
-
-    // Route::get('/lap-user', [LaporanController::class, 'lap_user']);
-    // Route::get('/lap-user/cetak', [LaporanController::class, 'cetak_user']);
-
-    // Route::get('/lap-barang', [LaporanController::class, 'lap_barang']);
-    // Route::get('/lap-barang/cetak', [LaporanController::class, 'cetak_barang']);
-
-    // Route::get('/lap-kategori', [LaporanController::class, 'lap_kategori']);
-    // Route::get('/lap-kategori/cetak', [LaporanController::class, 'cetak_kategori']);
 });
 
 Route::group(['middleware' => ['auth', 'checkLevel:gudang']], function () {

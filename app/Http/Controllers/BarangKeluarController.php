@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Barang;
-use App\Models\BarangMasuk;
 use App\Models\Kategori;
+use App\Models\BarangMasuk;
 use App\Models\BarangKeluar;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 date_default_timezone_set('Asia/Jakarta');
 
@@ -28,7 +29,21 @@ class BarangKeluarController extends Controller
     {
         $barang = Barang::all();
 
-        return view('gudang.transaksi.barang-keluar.add', compact('barang'));
+        $q = DB::table('barang_keluar')->select(DB::raw('MAX(RIGHT(no_barang_keluar,4)) as kode'));
+
+        $kd = "";
+        if ($q->count()  > 0) {
+            foreach ($q->get() as $k) {
+                $tmp = ((int)$k->kode) + 1;
+                $kd  = sprintf("%04s", $tmp);
+            }
+        } else {
+            $kd = "0001";
+        }
+
+        // return "NBM-".$kd;
+
+        return view('gudang.transaksi.barang-keluar.add', compact('barang', 'kd'));
     }
 
     public function ajax(Request $request)

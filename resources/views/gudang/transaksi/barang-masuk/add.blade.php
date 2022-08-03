@@ -41,7 +41,8 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>Nomor Barang Masuk</label>
-                                            <input type="text" class="form-control" name="no_barang_masuk" id="no_barang_masuk" placeholder="Nomor Barang Masuk" required>
+                                            <input type="text" class="form-control" name="no_barang_masuk" id="no_barang_masuk"
+                                            value="{{ 'NBM-'.$kd }}" readonly required>
                                         </div>
 
                                         <div class="form-group">
